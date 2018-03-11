@@ -1,3 +1,20 @@
 Test
-{{input value=(mut currWord) key-press="inputPassword"}}
+<div style="max-width:300px; padding:50px;"> 
+{{#paper-autocomplete
+  options=wordBank
+  allowClear=true
+  searchText=searchTxt
+  onSearchTextChange=(action (mut wordSearchText))
+  selected=selectedWord
+  placeholder=(concat "Type your Word " index)
+  noMatchesMessage="Oops this Word doesn't exist."
+  onSelectionChange=(action (mut selectedWord)) as |word autocomplete|}}
+  {{paper-autocomplete-highlight
+    label=word
+    searchText=autocomplete.searchText
+    flags="i"}}
+{{/paper-autocomplete}}
+
+</div>
+{{test}}
 {{yield}}
