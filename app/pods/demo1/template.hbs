@@ -1,0 +1,34 @@
+<div class='demo'>
+  {{#if tryAgain}}
+    <h1 class='error'>Incorrect password entered. You have {{remainingAttempts}} login attempts left.</h1>
+    <button class='btn-try-again' {{action 'tryAgain'}}>Try again?</button>
+    <button class='btn-move-on' {{action 'moveOn'}}>Give up and move on</button>
+  {{else if lockedOut}}
+    <h1 class='error'>Failed to authenticate this password.</h1>
+    <button class='btn-move-on' {{action 'moveOn'}}>Move on</button>
+  {{else if loginSuccess}}
+    <h1 class='error'>Successfully authenticated this password!</h1>
+    <button class='btn-move-on' {{action 'moveOn'}}>Move on</button>
+  {{else}}
+    <h1>Enter Your Generated Banking Password</h1>
+    <img src="https://picsum.photos/400/400/?image={{image}}">
+    <div class='enter-password'>
+      {{password-input-field
+        words=model.adjectives
+        placeholder='Type your 1st word'
+        selection=selectedAdjective
+        onSelectionChange=(action (mut selectedAdjective))}}
+      {{password-input-field
+        words=model.nouns
+        placeholder='Type your 2nd word'
+        selection=selectedNoun
+        onSelectionChange=(action (mut selectedNoun))}}
+      {{password-input-field
+        words=model.verbs
+        placeholder='Type your 3rd word'
+        selection=selectedVerb
+        onSelectionChange=(action (mut selectedVerb))}}
+    </div>
+    <button class='btn-login' disabled={{wordNotSelected}} {{action 'login'}}>Login</button>
+  {{/if}}
+</div>

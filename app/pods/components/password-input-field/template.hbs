@@ -1,20 +1,17 @@
-Test
-<div style="max-width:300px; padding:50px;"> 
 {{#paper-autocomplete
-  options=wordBank
+  options=filteredWords
   allowClear=true
-  searchText=searchTxt
-  onSearchTextChange=(action (mut wordSearchText))
-  selected=selectedWord
-  placeholder=(concat "Type your Word " index)
-  noMatchesMessage="Oops this Word doesn't exist."
-  onSelectionChange=(action (mut selectedWord)) as |word autocomplete|}}
+  searchText=searchText
+  onSearchTextChange=(action (mut searchText))
+  selected=selection
+  search=(action 'search')
+  searchField='word'
+  labelPath='word'
+  placeholder=placeholder
+  noMatchesMessage='Oops this word does not exist.'
+  onSelectionChange=onSelectionChange as |word autocomplete|}}
   {{paper-autocomplete-highlight
-    label=word
+    label=word.word
     searchText=autocomplete.searchText
-    flags="i"}}
+    flags='i'}}
 {{/paper-autocomplete}}
-
-</div>
-{{test}}
-{{yield}}

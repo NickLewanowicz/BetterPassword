@@ -1,0 +1,33 @@
+<div class='random'>
+  <h1>Banking Password</h1>
+  <h3>Your trigger image:</h3>
+  <img src="https://picsum.photos/400/400/?image={{image}}">
+  <h3>Your randomly generated password:</h3>
+  <div class='displayed-password'>
+    {{adjective.word}}
+    {{noun.word}}
+    {{verb.word}}
+  </div>
+  <h3>Practice entering your password:</h3>
+  <div class='confirm-password'>
+    {{password-input-field
+      words=model.adjectives
+      placeholder='Type your 1st word'
+      selection=selectedAdjective
+      onSelectionChange=(action (mut selectedAdjective))}}
+    {{fa-icon (if confirmedAdjective 'check' 'times')}}
+    {{password-input-field
+      words=model.nouns
+      placeholder='Type your 2nd word'
+      selection=selectedNoun
+      onSelectionChange=(action (mut selectedNoun))}}
+    {{fa-icon (if confirmedNoun 'check' 'times')}}
+    {{password-input-field
+      words=model.verbs
+      placeholder='Type your 3rd word'
+      selection=selectedVerb
+      onSelectionChange=(action (mut selectedVerb))}}
+    {{fa-icon (if confirmedVerb 'check' 'times')}}
+  </div>
+  <button class='btn-accept' disabled={{disableAccept}} {{action 'accept'}}>Accept Password</button>
+</div>

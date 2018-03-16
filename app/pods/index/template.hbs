@@ -1,1 +1,13 @@
-{{password-input-field}}
+<div class='home'>
+  <h1>COMP 3008 Project 2</h1>
+  <h2>TheDreamTeam</h2>
+  {{#link-to 'random1'}}
+    <button>Generate Random Passwords</button>
+  {{/link-to}}
+  {{#link-to (concat 'demo' firstDemo)}}
+    <button>Authenticate Passwords</button>
+  {{/link-to}}
+  {{#link-to 'log'}}
+    <button>Get Log</button>
+  {{/link-to}}
+</div>

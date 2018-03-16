@@ -1,0 +1,27 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+
+  .enter-password {
+    display: flex;
+    align-items: center;
+
+    .password-input-field {
+      margin: 30px 10px;
+    }
+  }
+
+  .btn-login {
+    width: 100px;
+  }
+
+  .btn-try-again,
+  .btn-move-on {
+    margin: 10px;
+  }
+}

@@ -1,0 +1,36 @@
+.random {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  .displayed-password {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .confirm-password {
+    display: flex;
+    align-items: center;
+
+    .fa {
+      font-size: 2em;
+      margin: 0 10px;
+
+      &-check {
+        color: green;
+      }
+
+      &-times {
+        color: red;
+      }
+    }
+  }
+
+  .btn-accept {
+    width: 150px;
+    margin-top: 20px;
+  }
+}
