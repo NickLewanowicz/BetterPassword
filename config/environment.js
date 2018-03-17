@@ -45,6 +45,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.locationType = 'hash';
+    ENV.baseUrl = '/ledger-password/';
     // here you can enable a production-specific feature
   }
 
