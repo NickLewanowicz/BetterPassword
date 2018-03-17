@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'ledger-password',
     podModulePrefix: 'ledger-password/pods',
     environment,
-    rootURL: '/',
+    rootURL: '/BetterPassword-HCI/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
