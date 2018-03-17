@@ -55,10 +55,7 @@ export default Mixin.create({
       let loginSuccess = this.get('confirmedAdjective') && this.get('confirmedNoun') && this.get('confirmedVerb');
       this.set('loginSuccess', loginSuccess);
       $.post('/api/submit-authenticate-password', JSON.stringify({
-        adjective: this.get('selectedAdjective'),
-        noun: this.get('selectedNoun'),
-        verb: this.get('selectedVerb'),
-        image: this.get('image')
+        account: this.get('account')
       }));
       $.post('/api/authenticate-password', JSON.stringify({success: loginSuccess, account: this.get('account')}));
     },

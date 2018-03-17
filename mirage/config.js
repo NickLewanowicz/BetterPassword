@@ -459,15 +459,7 @@ export default function() {
     return events;
   });
 
-  this.post('/api/create-password-1', function() {
-    addEvent('create', 'start', navigator.userAgent);
-  });
-
-  this.post('/api/create-password-2', function() {
-    addEvent('create', 'start', navigator.userAgent);
-  });
-
-  this.post('/api/create-password-3', function() {
+  this.post('/api/create-password', function() {
     addEvent('create', 'start', navigator.userAgent);
   });
 
@@ -503,7 +495,16 @@ export default function() {
   });
 
   this.post('/api/submit-authenticate-password', function(data, request) {
-    addEvent('enter', 'passwordSubmitted', `pwN:${getPasswordString(JSON.parse(request.requestBody))}`);
+    const result = JSON.parse(request.requestBody);
+    let password;
+    if (result.account === 1) {
+      password = password1;
+    } else if (result.account === 2) {
+      password = password2;
+    } else if (result.account === 3) {
+      password = password3;
+    }
+    addEvent('enter', 'passwordSubmitted', `pwN:${getPasswordString(password)}`);
   });
 
   this.post('/api/authenticate-password', function(data, request) {

@@ -5,6 +5,7 @@ import RSVP from 'rsvp';
 
 export default Mixin.create({
   model () {
+    $.post('/api/create-password');
     return RSVP.hash({
       adjectives: $.getJSON('/api/adjectives'),
       nouns: $.getJSON('/api/nouns'),
