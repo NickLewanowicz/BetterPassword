@@ -7,6 +7,12 @@ module.exports = function(environment) {
     environment,
     rootURL: '/BetterPassword-HCI/',
     locationType: 'auto',
+    firebase: {
+      apiKey: process.env.API_KEY,
+      authDomain: 'hci-analytics-e3484.firebaseapp.com',
+      databaseURL: 'https://hci-analytics-e3484.firebaseio.com',
+      storageBucket: 'hci-analytics-e3484.appspot.com',
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
