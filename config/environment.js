@@ -8,7 +8,7 @@ module.exports = function(environment) {
     rootURL: '/BetterPassword-HCI/',
     locationType: 'auto',
     firebase: {
-      apiKey: process.env.API_KEY,
+      apiKey: AIzaSyBfyC4-w5gmOEkFfu_721q02XARMbWyYhM,
       authDomain: 'hci-analytics-e3484.firebaseapp.com',
       databaseURL: 'https://hci-analytics-e3484.firebaseio.com',
       storageBucket: 'hci-analytics-e3484.appspot.com',
