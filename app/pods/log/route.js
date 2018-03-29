@@ -4,8 +4,10 @@ import $ from 'jquery';
 import RSVP from 'rsvp';
 
 export default Route.extend({
+  //The following will request the event log from the 
+  //backend and save it to our logs
   model () {
-    return RSVP.hash({
+    RSVP.hash({
       events: $.getJSON('/api/events')
     }).then(events => {
       this.store.createRecord('log', {
@@ -13,5 +15,8 @@ export default Route.extend({
         dataset:events
       }).save()
     });
+    return RSVP.hash({
+      events: $.getJSON('/api/events')
+    }); 
   }
 });

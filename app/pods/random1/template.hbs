@@ -29,5 +29,6 @@
       onSelectionChange=(action (mut selectedVerb))}}
     {{fa-icon (if confirmedVerb 'check' 'times')}}
   </div>
-  <button class='btn-accept' disabled={{disableAccept}} {{action 'accept'}}>Accept Password</button>
+
+  {{#paper-button class='btn-accept' disabled=disableAccept onClick=(action "accept") raised=true primary=true}}Accept Password{{/paper-button}}
 </div>

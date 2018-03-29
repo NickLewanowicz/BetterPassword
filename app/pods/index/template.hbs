@@ -1,19 +1,22 @@
+{{!-- 
+The template will define the view for the user, 
+the following is a text block with 3 buttons below
+--}}
+
 <div class='home'>
   <h1>Phrase Based Password Prototype</h1>
   <h2>Adam Ward, Nicholas Lewanowicz, Basim Ramadhan and Tom Robin</h2>
   <p align="center">The objective of this study is to identify the practical application of semantic phrase based passwords.<br/> 
      The following system incorporates passphrases with photographic cues and we are collectiing data to study its effectiveness.<br/>
      By clicking the below buttons you agree to the consent conditions outlined <a href="https://drive.google.com/file/d/1NESC0BPHtVbUK0dOwWgIGcZvqPI6nYwD/view?usp=sharing">here</a> 
-     
   </p>
-  
-  {{#link-to 'random1'}}
-    <button>Generate Random Passwords</button>
-  {{/link-to}}
-  {{#link-to (concat 'demo' firstDemo)}}
-    <button>Authenticate Passwords</button>
-  {{/link-to}}
-  {{#link-to 'log'}}
-    <button>Get Log</button>
-  {{/link-to}}
+  {{paper-divider}}
+  {{#paper-button href='random1' raised=true primary=true}}
+    Generate Random Passwords
+    {{#paper-tooltip position='bottom'}}
+    Thanks for agreeing to the above!
+    {{/paper-tooltip}}
+  {{/paper-button}}
+  {{#paper-button href=(concat 'demo' firstDemo) raised=false primary=false}}Authenticate Passwords{{/paper-button}}
+  {{#paper-button href='log' raised=false primary=false}}Get Log{{/paper-button}}
 </div>

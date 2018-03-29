@@ -3,7 +3,16 @@ import { computed } from '@ember/object';
 import $ from 'jquery';
 
 export default Mixin.create({
-
+/*
+  remainingAttempts: keeps track of remaining attempts
+  image: reference to image
+  adjective; noun; verb: The pieces of the password for the route
+  order: order for routes
+  confirmedAdjective; confirmedNoun; confirmedVerb: this will confirm the entry from the user
+  tryAgain: dependent on how many attempts you have left this will allow you to try again
+  lockedOut: true if you are out of attempts
+  wordNotSelected: true if any of your words are wrong
+*/
   remainingAttempts: 2,
 
   image: computed.alias('model.password.image'),
@@ -70,7 +79,7 @@ export default Mixin.create({
     },
     moveOn () {
       const order = this.get('order');
-      const account = this.get('account');
+      const account = this.get('account') +1;
       const index = order.indexOf(account);
       this.transitionToRoute(index + 1 === order.length ? 'index' : `demo${this.get('model').order[index+1]}`);
     }

@@ -1,15 +1,33 @@
+{{!-- 
+The template will define the view for the user, the following is a conditional with 4 options:
+  - The user is trying for the first time
+  - The user successfully logged in
+  - The user is retrying
+  - The user is out of attempts
+
+Each of the above will change the view and navigation for the user
+
+--}}
+
 <div class='demo'>
+  
   {{#if tryAgain}}
+    {{!-- The user is retrying --}}
     <h1 class='error'>Incorrect password entered. You have {{remainingAttempts}} login attempts left.</h1>
-    <button class='btn-try-again' {{action 'tryAgain'}}>Try again?</button>
-    <button class='btn-move-on' {{action 'moveOn'}}>Give up and move on</button>
+    {{#paper-button class='btn-try-again' onClick=(action "tryAgain") raised=true primary=true}}Try again?{{/paper-button}}
+    {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Move on{{/paper-button}}
+  
   {{else if lockedOut}}
+    {{!-- The user is out of attempts --}}
     <h1 class='error'>Failed to authenticate this password.</h1>
-    <button class='btn-move-on' {{action 'moveOn'}}>Move on</button>
+    {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Move on{{/paper-button}}
+  
   {{else if loginSuccess}}
+    {{!-- The user successfully logged in --}}
     <h1 class='error'>Successfully authenticated this password!</h1>
-    <button class='btn-move-on' {{action 'moveOn'}}>Move on</button>
+    {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Move on{{/paper-button}}
   {{else}}
+    {{!-- The user is trying for the first time --}}
     <h1>Enter Your Generated Banking Password</h1>
     <img src="https://picsum.photos/400/400/?image={{image}}">
     <div class='enter-password'>
@@ -29,6 +47,6 @@
         selection=selectedVerb
         onSelectionChange=(action (mut selectedVerb))}}
     </div>
-    <button class='btn-login' disabled={{wordNotSelected}} {{action 'login'}}>Login</button>
+    {{#paper-button class='btn-login' disabled=wordNotSelected onClick=(action "login") raised=true primary=true}}Move on{{/paper-button}}
   {{/if}}
 </div>
