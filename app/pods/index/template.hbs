@@ -16,7 +16,7 @@ the following is a text block with 3 buttons below
         By clicking the below buttons you agree to the consent conditions outlined <a href="https://drive.google.com/file/d/1NESC0BPHtVbUK0dOwWgIGcZvqPI6nYwD/view?usp=sharing">here</a> 
       </p>
       {{#card.actions class="layout-column layout-align-center"}}
-        {{#paper-button href='random1' raised=true primary=true}}
+        {{#paper-button onClick=(action 'authPass' 'random1') raised=true primary=true}}
           Generate Random Passwords
           {{#paper-tooltip position='bottom'}}
           Thanks for agreeing to the above!
