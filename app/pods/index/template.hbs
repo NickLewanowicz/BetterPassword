@@ -2,22 +2,29 @@
 The template will define the view for the user, 
 the following is a text block with 3 buttons below
 --}}
-
-<div class='home'>
-  <h1>Phrase Based Password Prototype</h1>
-  <h2>Adam Ward, Nicholas Lewanowicz, Basim Ramadhan and Tom Robin</h2>
-  <p align="center">The objective of this study is to identify the practical application of semantic phrase based passwords.<br/> 
-     The following system incorporates passphrases with photographic cues and we are collectiing data to study its effectiveness.<br/>
-     By clicking the below buttons you agree to the consent conditions outlined <a href="https://drive.google.com/file/d/1NESC0BPHtVbUK0dOwWgIGcZvqPI6nYwD/view?usp=sharing">here</a> 
-  </p>
-  {{paper-divider}}
-  {{#paper-button href='random1' raised=true primary=true}}
-    Generate Random Passwords
-    {{#paper-tooltip position='bottom'}}
-    Thanks for agreeing to the above!
-    {{/paper-tooltip}}
-  {{/paper-button}}
-  {{#paper-button onClick=(action 'authPass' (concat 'demo' firstDemo)) raised=false primary=false}}Authenticate Passwords{{/paper-button}}
-
-  {{#paper-button onClick=(action 'authPass' 'log') raised=false primary=false}}Get Log{{/paper-button}}
+<div class="layout-row layout-align-center-center">
+  <div class="home-class layout layout-align-center flex-gt-xs-60">
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline class='home-class header big'}}Phrase Based Password Prototype{{/text.headline}}
+          {{#text.subhead class='home-class header'}}Adam Ward, Nicholas Lewanowicz, Basim Ramadhan and Tom Robin{{/text.subhead}}
+        {{/title.text}}
+      {{/card.title}}
+      <p align="center">The objective of this study is to identify the practical application of semantic phrase based passwords.<br/> 
+        The following system incorporates passphrases with photographic cues and we are collectiing data to study its effectiveness.<br/>
+        By clicking the below buttons you agree to the consent conditions outlined <a href="https://drive.google.com/file/d/1NESC0BPHtVbUK0dOwWgIGcZvqPI6nYwD/view?usp=sharing">here</a> 
+      </p>
+      {{#card.actions class="layout-column layout-align-center"}}
+        {{#paper-button href='random1' raised=true primary=true}}
+          Generate Random Passwords
+          {{#paper-tooltip position='bottom'}}
+          Thanks for agreeing to the above!
+          {{/paper-tooltip}}
+        {{/paper-button}}
+        {{#paper-button onClick=(action 'authPass' (concat 'demo' firstDemo)) raised=false primary=false}}Authenticate Passwords{{/paper-button}}
+        {{#paper-button onClick=(action 'authPass' 'log') raised=false primary=false}}Get Log{{/paper-button}}
+      {{/card.actions}}
+    {{/paper-card}}
+  </div>
 </div>
