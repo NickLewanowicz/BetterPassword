@@ -17,6 +17,7 @@ the following is a text block with 3 buttons below
     Thanks for agreeing to the above!
     {{/paper-tooltip}}
   {{/paper-button}}
-  {{#paper-button href=(concat 'demo' firstDemo) raised=false primary=false}}Authenticate Passwords{{/paper-button}}
-  {{#paper-button href='log' raised=false primary=false}}Get Log{{/paper-button}}
+  {{#paper-button onClick=(action 'authPass' (concat 'demo' firstDemo)) raised=false primary=false}}Authenticate Passwords{{/paper-button}}
+
+  {{#paper-button onClick=(action 'authPass' 'log') raised=false primary=false}}Get Log{{/paper-button}}
 </div>

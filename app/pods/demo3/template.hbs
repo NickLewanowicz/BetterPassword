@@ -3,14 +3,17 @@
 <div class='demo'>
   {{#if tryAgain}}
     <h1 class='error'>Incorrect password entered. You have {{remainingAttempts}} login attempts left.</h1>
-    <button class='btn-try-again' {{action 'tryAgain'}}>Try again?</button>
-    <button class='btn-move-on' {{action 'moveOn'}}>Give up and move on</button>
+    {{#paper-button class='btn-try-again' onClick=(action "tryAgain") raised=true primary=true}}Try again?{{/paper-button}}
+    {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Move on{{/paper-button}}
+
   {{else if lockedOut}}
     <h1 class='error'>Failed to authenticate this password.</h1>
-    <button class='btn-move-on' {{action 'moveOn'}}>Move on</button>
+    {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Move on{{/paper-button}}
+
   {{else if loginSuccess}}
     <h1 class='error'>Successfully authenticated this password!</h1>
-    <button class='btn-move-on' {{action 'moveOn'}}>Move on</button>
+    {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Move on{{/paper-button}}
+
   {{else}}
     <h1>Enter Your Generated Social Media Password</h1>
     <img src="https://picsum.photos/400/400/?image={{image}}">
@@ -31,6 +34,6 @@
         selection=selectedVerb
         onSelectionChange=(action (mut selectedVerb))}}
     </div>
-    <button class='btn-login' disabled={{wordNotSelected}} {{action 'login'}}>Login</button>
+    {{#paper-button class='btn-login' disabled=wordNotSelected onClick=(action "login") raised=true primary=true}}Login{{/paper-button}}
   {{/if}}
 </div>

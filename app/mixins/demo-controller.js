@@ -79,7 +79,7 @@ export default Mixin.create({
     },
     moveOn () {
       const order = this.get('order');
-      const account = this.get('account') +1;
+      const account = this.get('account');
       const index = order.indexOf(account);
       this.transitionToRoute(index + 1 === order.length ? 'index' : `demo${this.get('model').order[index+1]}`);
     }

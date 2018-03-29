@@ -6,5 +6,11 @@ export default Controller.extend({
   //of the api request made in `index/route`
   firstDemo: computed('model', function () {
     return this.get('model').order[0];
-  })
+  }),
+
+  actions: {
+    authPass (newRoute) {
+      this.transitionToRoute(newRoute);
+    }
+  }
 });
