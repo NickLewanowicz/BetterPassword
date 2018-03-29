@@ -6,7 +6,7 @@ module.exports = function(environment) {
     podModulePrefix: 'ledger-password/pods',
     environment,
     rootURL: '/BetterPassword-HCI/',
-    locationType: 'auto',
+    locationType: 'none',
     firebase: {
       apiKey: 'AIzaSyBfyC4-w5gmOEkFfu_721q02XARMbWyYhM',
       authDomain: 'hci-analytics-e3484.firebaseapp.com',
