@@ -1,6 +1,7 @@
 import Mixin from '@ember/object/mixin';
 import { computed } from '@ember/object';
 import $ from 'jquery';
+import RSVP from 'rsvp';
 
 export default Mixin.create({
 /*
@@ -77,11 +78,26 @@ export default Mixin.create({
       this.set('selectedNoun', null);
       this.set('selectedVerb', null);
     },
+    // The following moves to the next password entry page. If the
+    // experiment is done, push the log data to the database
     moveOn () {
       const order = this.get('order');
       const account = this.get('account');
       const index = order.indexOf(account);
-      this.transitionToRoute(index + 1 === order.length ? 'index' : `demo${this.get('model').order[index+1]}`);
+
+      if (index + 1 === order.length) {
+        RSVP.hash({
+          log: $.getJSON('/api/log')
+        }).then(data => {
+          this.store.createRecord('log', {
+            id: data.log.user,
+            dataset: {events: data.log.events}
+          }).save()
+        });
+        this.transitionToRoute('index');
+      } else {
+      this.transitionToRoute(`demo${this.get('model').order[index+1]}`);
+      }
     }
   }
 });

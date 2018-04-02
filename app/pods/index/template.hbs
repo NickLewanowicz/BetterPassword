@@ -1,5 +1,5 @@
-{{!-- 
-The template will define the view for the user, 
+{{!--
+The template will define the view for the user,
 the following is a text block with 3 buttons below
 --}}
 <div class="layout-row layout-align-center-center">
@@ -11,10 +11,20 @@ the following is a text block with 3 buttons below
           {{#text.subhead class='home-class header'}}Adam Ward, Nicholas Lewanowicz, Basim Ramadhan and Tom Robin{{/text.subhead}}
         {{/title.text}}
       {{/card.title}}
-      <p align="center">The objective of this study is to identify the practical application of semantic phrase based passwords.<br/> 
-        The following system incorporates passphrases with photographic cues and we are collectiing data to study its effectiveness.<br/>
-        By clicking the below buttons you agree to the consent conditions outlined <a href="https://drive.google.com/file/d/1NESC0BPHtVbUK0dOwWgIGcZvqPI6nYwD/view?usp=sharing">here</a> 
+      <p align="center">The objective of this study is to identify the practical application of semantic phrase based passwords.<br/>
+        The following system incorporates passphrases with photographic cues and we are collectiing data to study its effectiveness.<br/><br/>
+        By clicking the below buttons you agree to the consent conditions outlined <a href="https://drive.google.com/file/d/1NESC0BPHtVbUK0dOwWgIGcZvqPI6nYwD/view?usp=sharing">here</a>
       </p>
+      <h3 align="center">Instructions:</h3>
+      <ol style="margin: auto;">
+        <li>Click the "Generate Random Passwords" button to generate 3 passwords, for 3 different, fictitious accounts</li><br/>
+        <li>Each password is a random 3 word phrase. Each password also has an associated "trigger image" which is intended to help you better remember your password by learning to associate the image with the password.</li><br/>
+        <li>For each passoword you are given, you need to practice entering it before moving on</li><br/>
+        <li>Once you have your 3 passwords, click the "Authenticate Passwords" button when you are ready. You will be asked to enter each of your passwords in a random order</li><br/>
+        <li>You need to select all 3 words of your password before clicking the "Login" button</li><br/>
+        <li>You get 3 attempts to correctly enter each password</li><br/>
+        <li>Click on the "Complete Questionaire" link, fill out the questionaire and submit your answers</li><br/>
+      </ol>
       {{#card.actions class="layout-column layout-align-center"}}
         {{#paper-button onClick=(action 'authPass' 'random1') raised=true primary=true}}
           Generate Random Passwords
@@ -23,7 +33,8 @@ the following is a text block with 3 buttons below
           {{/paper-tooltip}}
         {{/paper-button}}
         {{#paper-button onClick=(action 'authPass' (concat 'demo' firstDemo)) raised=false primary=false}}Authenticate Passwords{{/paper-button}}
-        {{#paper-button onClick=(action 'authPass' 'log') raised=false primary=false}}Get Log{{/paper-button}}
+        {{#paper-button onClick=(action 'authPass' 'log') raised=false primary=false}}View Log{{/paper-button}}
+        {{#paper-button href='https://hotsoft.carleton.ca/comp3008limesurvey/index.php/822874?lang=en' target='_blank' raised=false primary=false}}Complete Questionaire{{/paper-button}}
       {{/card.actions}}
     {{/paper-card}}
   </div>

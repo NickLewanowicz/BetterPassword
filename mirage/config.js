@@ -521,6 +521,6 @@ export default function() {
   });
 
   this.get('/api/log', function() {
-    return {events};
+    return {user, events};
   });
 }
