@@ -2,6 +2,7 @@ import Mixin from '@ember/object/mixin';
 import { computed } from '@ember/object';
 import $ from 'jquery';
 
+//Used to manage the wrong images
 const MAX_IMAGE_ID = 1084;
 const missingIDs = [86, 97, 105, 138, 148, 150, 205, 207, 224, 226, 245, 246, 262,
                     285, 286, 298, 303, 332, 333, 346, 359, 394, 414, 422, 438, 462,
@@ -12,6 +13,7 @@ const missingIDs = [86, 97, 105, 138, 148, 150, 205, 207, 224, 226, 245, 246, 26
                     895, 897, 917, 920, 956, 963, 1007, 1034, 1046
                   ];
 
+//Function will fetch a random image from a open source db
 const getRandomImage = () => {
   let id = Math.floor(Math.random() * MAX_IMAGE_ID);
   while (missingIDs.contains(id)) {
@@ -22,6 +24,7 @@ const getRandomImage = () => {
 
 export default Mixin.create({
 
+  //The following 4 properties will dynamically select the random password
   image: computed('model', function() {
     return getRandomImage();
   }),
@@ -41,6 +44,7 @@ export default Mixin.create({
     return verbs[Math.floor(Math.random() * verbs.length)];
   }),
 
+  //This will combine the above properties into a passphrase with image
   password: computed('adjective', 'noun', 'verb', 'image', function() {
     return {
       adjective: this.get('adjective'),
@@ -50,6 +54,7 @@ export default Mixin.create({
     };
   }),
 
+  //The following 3 funtions will confirm if the word was successfully confirmed
   confirmedAdjective: computed('adjective', 'selectedAdjective', function() {
     const selectedAdjective = this.get('selectedAdjective');
     const adjective = this.get('adjective');
@@ -68,11 +73,13 @@ export default Mixin.create({
     return selectedVerb && verb && verb.id === selectedVerb.id;
   }),
 
+  //This will allow the client to lock in their answer
   disableAccept: computed('confirmedAdjective', 'confirmedNoun', 'confirmedVerb', function() {
     return !(this.get('confirmedAdjective') && this.get('confirmedNoun') && this.get('confirmedVerb'));
   }),
 
   actions: {
+    //Will manage transitioning between 'random' routes
     accept () {
       const account = this.get('account');
       $.post(`/api/submit-password-${account}`, JSON.stringify(this.get('password')));

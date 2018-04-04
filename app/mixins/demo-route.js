@@ -4,6 +4,11 @@ import $ from 'jquery';
 import RSVP from 'rsvp';
 
 export default Mixin.create({
+  /*
+    Model represents the loaded state from the backend
+    WillTransition will reset the words on page change
+  */
+
   model () {
     $.post('/api/start-authenticate-password');
     return RSVP.hash({
