@@ -1,0 +1,82 @@
+{{#if login}}
+    <div class='demo'>
+        {{#if tryAgain}}
+            {{!-- The user is retrying --}}
+            <h1 class='error'>Incorrect password entered. You have {{remainingAttempts}} login attempts left.</h1>
+            {{#paper-button class='btn-try-again' onClick=(action "tryAgain") raised=true primary=true}}Try again?{{/paper-button}}
+            {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Go Home{{/paper-button}}
+        
+        {{else if lockedOut}}
+            {{!-- The user is out of attempts --}}
+            <h1 class='error'>Failed to authenticate this password.</h1>
+            {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Go Home{{/paper-button}}
+        
+        {{else if loginSuccess}}
+            {{!-- The user successfully logged in --}}
+            <h1 class='error'>Successfully authenticated this password!</h1>
+            {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Go Home{{/paper-button}}
+        {{else}}
+            {{!-- The user is trying for the first time --}}
+            <h1>Enter Your Generated Sample Password</h1>
+            <img src="https://picsum.photos/400/400/?image={{image}}">
+            <div class='enter-password'>
+            {{password-input-field
+                words=model.adjectives
+                placeholder='Type your 1st word'
+                selection=selectedAdjective
+                onSelectionChange=(action (mut selectedAdjective))}}
+            {{password-input-field
+                words=model.nouns
+                placeholder='Type your 2nd word'
+                selection=selectedNoun
+                onSelectionChange=(action (mut selectedNoun))}}
+            {{password-input-field
+                words=model.verbs
+                placeholder='Type your 3rd word'
+                selection=selectedVerb
+                onSelectionChange=(action (mut selectedVerb))}}
+            </div>
+            {{#paper-button class='btn-login' disabled=wordNotSelected onClick=(action "login") raised=true primary=true}}Login{{/paper-button}}
+        {{/if}}
+    </div>
+{{else if register}}
+    <div class='random'>
+        <h1>Sample Password</h1>
+        <h3>Your trigger image:</h3>
+        <img src="https://picsum.photos/400/400/?image={{image}}">
+        <h3>Your randomly generated password:</h3>
+        <div class='displayed-password'>
+            {{adjective.word}}
+            {{noun.word}}
+            {{verb.word}}
+        </div>
+        <h3>Practice entering your password:</h3>
+        <div class='confirm-password'>
+            {{password-input-field
+            words=model.adjectives
+            placeholder='Type your 1st word'
+            selection=selectedAdjective
+            onSelectionChange=(action (mut selectedAdjective))}}
+            {{fa-icon (if confirmedAdjective 'check' 'times')}}
+            {{password-input-field
+            words=model.nouns
+            placeholder='Type your 2nd word'
+            selection=selectedNoun
+            onSelectionChange=(action (mut selectedNoun))}}
+            {{fa-icon (if confirmedNoun 'check' 'times')}}
+            {{password-input-field
+            words=model.verbs
+            placeholder='Type your 3rd word'
+            selection=selectedVerb
+            onSelectionChange=(action (mut selectedVerb))}}
+            {{fa-icon (if confirmedVerb 'check' 'times')}}
+        </div>
+        {{#paper-button class='btn-accept' disabled=disableAccept onClick=(action "accept") raised=true primary=true}}Accept Password{{/paper-button}}
+    </div>
+{{else}}
+    <div class="layout-column sample-buttons">
+        <h1>Sample Login/Register Page</h1>
+        {{#paper-button class='btn-accept' disabled=(eq didRegister false) onClick=(action "log") raised=true primary=true}}Login{{/paper-button}}
+        {{#paper-button class='btn-accept' disabled=didRegister onClick=(action "reg") raised=true primary=true}}Register{{/paper-button}}
+    </div>
+{{/if}}

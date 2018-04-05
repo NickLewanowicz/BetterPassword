@@ -33,8 +33,9 @@ the following is a text block with 3 buttons below
           {{/paper-tooltip}}
         {{/paper-button}}
         {{#paper-button onClick=(action 'authPass' (concat 'demo' firstDemo)) raised=false primary=false}}Authenticate Passwords{{/paper-button}}
-        {{#paper-button onClick=(action 'authPass' 'log') raised=false primary=false}}View Log{{/paper-button}}
+        {{#paper-button onClick=(action 'authPass' 'sample') raised=false primary=false}}Sample Login/Register{{/paper-button}}
         {{#paper-button href='https://hotsoft.carleton.ca/comp3008limesurvey/index.php/822874?lang=en' target='_blank' raised=false primary=false}}Complete Questionaire{{/paper-button}}
+        {{#paper-button onClick=(action 'authPass' 'Log') raised=false primary=false}}View Log{{/paper-button}}
       {{/card.actions}}
     {{/paper-card}}
   </div>

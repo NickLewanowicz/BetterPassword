@@ -20,3 +20,10 @@ body {
         }
     }
 }
+
+.sample-buttons {
+    min-height: 100VH;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
