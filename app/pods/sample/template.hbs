@@ -5,12 +5,12 @@
             <h1 class='error'>Incorrect password entered. You have {{remainingAttempts}} login attempts left.</h1>
             {{#paper-button class='btn-try-again' onClick=(action "tryAgain") raised=true primary=true}}Try again?{{/paper-button}}
             {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Go Home{{/paper-button}}
-        
+
         {{else if lockedOut}}
             {{!-- The user is out of attempts --}}
             <h1 class='error'>Failed to authenticate this password.</h1>
             {{#paper-button class='btn-move-on' onClick=(action "moveOn") raised=true primary=true}}Go Home{{/paper-button}}
-        
+
         {{else if loginSuccess}}
             {{!-- The user successfully logged in --}}
             <h1 class='error'>Successfully authenticated this password!</h1>

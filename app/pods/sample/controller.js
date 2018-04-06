@@ -3,6 +3,7 @@ import RandomController from '../../mixins/random-controller'
 import DemoController from '../../mixins/demo-controller'
 
 export default Controller.extend(DemoController, RandomController, {
+    account: 1,
     login: false,
     register: false,
     didRegister: false,
@@ -23,10 +24,9 @@ export default Controller.extend(DemoController, RandomController, {
             this.set('login', true)
         },
         moveOn () {
-            this.set('remainingAttempts', 3)
+            this.set('remainingAttempts', 2)
             this.set('register', false)
-            this.set('loginSuccess', false)
-            this.set('tryAgain', false)
+            this.set('loginSuccess', null)
             this.set('didRegister', false)
             this.set('login', false)
             this.set('selectedAdjective', null);
