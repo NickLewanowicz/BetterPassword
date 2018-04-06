@@ -18,12 +18,15 @@ import main.java.model.LoginResult;
 import main.java.model.UserResults;
 
 /**
+ * This file contains the all the code for our log parser, including
+ * the main method of the application
+ * 
  * To run correctly the Eclipse lunch configuration must provide
  * the absolute path to the CSV file with the log data as an argument
  */
 public class Main {
 	
-	/**  */
+	/** Delimiter separating each row field */
 	private static final String delimeter = ",";
 
 	// Indices for each column in each entry
@@ -51,28 +54,47 @@ public class Main {
 	private static final String goodLogin = "goodLogin";
 	private static final String badLogin = "badLogin";
 	
+	// For representing a number has not been set/found in the log yet
 	private static final long NULL = -1;
 
+	/**
+	 * @param args Arguments of the application (arg 0 should be absolute path of CSV file)
+	 * @throws IOException
+	 */
 	public static void main(final String[] args) throws IOException {
+		// Open the CSV file
 		final FileInputStream fstream = new FileInputStream(args[0]);
 		final BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+		
+		// Map for storing users
 		final Map<String, UserResults> users = new TreeMap<>();
 
 		UserResults user;
 		String strLine;
 		long startTime = NULL;
 		long endTime = NULL;
+		
+		// Read each line from CSV file, one at a time
 		while ((strLine = br.readLine()) != null)   {
-		  final String[] lineData = strLine.replaceAll("\"", "").split(delimeter);
-		  switch (lineData[eventIndex]) {
+			// Break log entry into an array
+			final String[] lineData = strLine.replaceAll("\"", "").split(delimeter);
+			switch (lineData[eventIndex]) {
+			
+			// On "register" event
 		  	case registerEvent:
 		  		// Record user ID
 		  		user = new UserResults(lineData[userIndex]);
-		  		users.put(user.getUserID(), user);
+		  		if (!users.containsKey(user.getUserID())) {
+			  		users.put(user.getUserID(), user);
+		  		}
 		  		break;
+		  		
+		  	// On "create" event
 		  	case createEvent:
 		  		// Ignore
 		  		break;
+		  	
+		  	// On "enter" event
 		  	case enterEvent:
 		  		user = users.get(lineData[userIndex]);
 		  		if (user != null) {
@@ -98,6 +120,8 @@ public class Main {
 		  			}
 		  		}
 		  		break;
+		  	
+		  	// On "login" event
 		  	case loginEvent:
 		  		// Record success/failure of Text21 login attempt
 		  		user = users.get(lineData[userIndex]);
