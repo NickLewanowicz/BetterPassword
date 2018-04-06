@@ -25,6 +25,8 @@ export default Controller.extend(DemoController, RandomController, {
         moveOn () {
             this.set('remainingAttempts', 3)
             this.set('register', false)
+            this.set('loginSuccess', false)
+            this.set('tryAgain', false)
             this.set('didRegister', false)
             this.set('login', false)
             this.set('selectedAdjective', null);
