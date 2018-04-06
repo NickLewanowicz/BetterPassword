@@ -70,6 +70,7 @@ export default Mixin.create({
       $.post('/api/authenticate-password', JSON.stringify({success: loginSuccess, account: this.get('account')}));
     },
     tryAgain () {
+      $.post('/api/start-authenticate-password');
       const remainingAttempts = this.get('remainingAttempts');
       this.set('remainingAttempts', remainingAttempts - 1);
       this.set('loginSuccess', null);
