@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'ledger-password',
     podModulePrefix: 'ledger-password/pods',
     environment,
-    rootURL: '/BetterPassword-HCI/',
+    rootURL: '/BetterPassword/',
     locationType: 'none',
     firebase: {
       apiKey: 'AIzaSyBfyC4-w5gmOEkFfu_721q02XARMbWyYhM',
@@ -54,7 +54,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.locationType = 'hash';
-    ENV.baseUrl = '/BetterPassword-HCI/';
+    ENV.baseUrl = '/BetterPassword/';
     // here you can enable a production-specific feature
   }
 
